@@ -3,7 +3,7 @@
 ## Engines
 | Engine | Where | Quality | Setup |
 |---|---|---|---|
-| **MagpieTTS local server** (default) | NVIDIA GPU on the user's Windows PC | natural, 5 voices, free, offline | `assets/tts/start_voice_server.bat` (one time, ~5 GB, 10-20 min) |
+| **MagpieTTS local server** (default) | NVIDIA GPU on the user's Windows or Linux PC | natural, 5 voices, free, offline | `assets/tts/start_voice_server.bat` or `.sh` (one time, ~5 GB, 10-20 min) |
 | **edge-tts** (fallback) | any OS, internet | good | `pip install edge-tts`; `scripts/tts_edge.py` |
 | **Their own recordings** | - | whatever they record | one 16-bit PCM wav per sentence id in `<video>/audio/` |
 | **Silent** | - | captions + estimated timing (0.4 s/word) | `build_timeline.py --silent` |
@@ -11,7 +11,7 @@
 All engines end in the same place: `<video>/audio/<sentence id>.wav` + `<video>/audio/durations.json`.
 
 ## Local server contract (folder mode)
-`assets/tts/` holds `start_voice_server.bat` (creates a private Python 3.12 env, installs pinned packages + CUDA PyTorch, starts the server) and `voice_server.py`.
+`assets/tts/` holds `start_voice_server.py` with `.bat`/`.sh` wrappers (creates a private Python 3.12 env, installs pinned packages + CUDA PyTorch, starts the server) and `voice_server.py`.
 It watches `<tts folder>/voice-data/jobs/` and writes `voice-data/results/<job>/`.
 - Job: `{"job": "<name>", "voice": "Sofia", "chunks": [{"id": "s01a", "text": "..."}]}` - names/ids match `^[A-Za-z0-9_.-]+$`.
 - Output per chunk: `<id>.wav` (22.05 kHz mono PCM16). `status.json` (`state`: running/done/error + traceback). `durations.json` (only when finished).

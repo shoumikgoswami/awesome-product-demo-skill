@@ -6,7 +6,7 @@
     voice_job.py wait    --root VOICE_DIR --job NAME [--timeout 170]  # exit 0 done, 2 error, 3 not finished / server not running
     voice_job.py collect --root VOICE_DIR --job NAME --audio-dir DIR [--manifest M]   # copy wavs -> DIR/<sentence id>.wav
 
-VOICE_DIR is the folder start_voice_server.bat watches (it contains jobs/ and results/).
+VOICE_DIR is the folder start_voice_server.py serves (it contains jobs/ and results/).
 Rules the server imposes: job names and chunk ids match ^[A-Za-z0-9_.-]+$, and a chunk whose wav already exists in
 results/<job>/ is SKIPPED - so a corrected line must always go in a NEW job name (`--job myvideo_fix01`).
 """
@@ -121,7 +121,7 @@ def cmd_wait(a):
                 return 2
             print(f"running {s['done']}/{s['total']}", flush=True)
         elif time.time() - t0 > 30 and not started:
-            print("No status after 30 s - the voice server is probably not running. Ask the user to start start_voice_server.bat and leave the window open.")
+            print("No status after 30 s - the voice server is probably not running. Ask the user to start start_voice_server.bat (Windows) or start_voice_server.sh (Linux) and leave the window open.")
             return 3
         time.sleep(4)
     print("not finished yet (timeout) - call wait again")

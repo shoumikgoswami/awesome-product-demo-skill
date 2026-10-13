@@ -38,7 +38,7 @@ Read `references/environments.md` first if you are not sure. In short:
 - `python scripts/setup_renderer.py --dest renderer` (Node 18+, ffmpeg; installs Remotion + bundled fonts; safe to re-run).
 - `pip install pillow numpy`; optional `pip install faster-whisper` (caption sync; works without).
 - Voice: confirm the voice server is running (step 5) or choose the fallback. Do not start the 5 GB install unprompted: explain it
-  (`assets/tts/README.md`) and let the user run `start_voice_server.bat`.
+  (`assets/tts/README.md`) and let the user run `start_voice_server.bat` (Windows) or `start_voice_server.sh` (Linux).
 
 ### 2. Create the project and inspect (silent, then one short message)
 `python scripts/new_project.py --name <video> --screens <folder> [--script s.txt] [--logo logo.png] [--product "<Name>"] --root <workdir>`
@@ -65,7 +65,7 @@ URL or brand colours, use those. Tell the user which accent, mode and font you c
 ### 5. Voiceover (`references/voice-and-tts.md`)
 1. `python scripts/voice_job.py lint --manifest <video>/manifest.json` - fix risky terms (acronyms need spaces: "A P I"); add product terms to `pronunciations.json`.
 2. `submit --job <video>_v1` -> `wait` (poll until `done`) -> `collect --audio-dir <video>/audio`.
-3. If nothing starts within ~30 s the server is not running: tell the user to start `start_voice_server.bat`; do not wait indefinitely.
+3. If nothing starts within ~30 s the server is not running: tell the user to start `start_voice_server.bat` (Windows) or `start_voice_server.sh` (Linux); do not wait indefinitely.
 4. No GPU: `scripts/tts_edge.py`; user's own recordings: drop `<sentence id>.wav` files in `<video>/audio/`; no voice: `--silent` (captions only).
 5. A corrected line always goes in a **new** job name (the server skips existing wavs). You cannot listen: say so, and ask the user to flag mispronunciations.
 
@@ -100,6 +100,6 @@ new voice job for that sentence -> `build_timeline.py` -> re-render; change a co
 ## File map
 - `scripts/` - `new_project.py`, `inspect_screens.py`, `extract_brand.py`, `parse_script.py`, `voice_job.py`, `tts_edge.py`, `build_timeline.py`, `render.py`, `verify_video.py`, `setup_renderer.py`
 - `assets/remotion-template/` - the Remotion project (copied to `renderer/` by `setup_renderer.py`)
-- `assets/tts/` - `start_voice_server.bat`, `voice_server.py`, `requirements_windows.txt`, README (local text-to-speech)
+- `assets/tts/` - `start_voice_server.py` (+ `.bat`/`.sh` wrappers), `voice_server.py`, `requirements.txt`, README (local text-to-speech)
 - `references/` - `manifest-reference.md`, `script-writing.md`, `brand-and-design.md`, `voice-and-tts.md`, `render-and-verify.md`, `environments.md`
 - `examples/lumina/` - fictional product, 5 screenshots + a complete `manifest.json` to try the pipeline in minutes

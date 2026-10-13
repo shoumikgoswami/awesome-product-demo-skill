@@ -5,7 +5,7 @@ with smooth zooms, a moving cursor, step tracker and a branded intro/outro. No s
 
 - **Bring a script or let Claude write it** from your screenshots and a few instructions.
 - **Brand and theme detected automatically** from the screenshots and logo (accent, light/dark, fonts, logo plate).
-- **Free, offline voiceover**: NVIDIA MagpieTTS on your own GPU (one-click Windows setup), with an `edge-tts` fallback or your own recordings.
+- **Free, offline voiceover**: NVIDIA MagpieTTS on your own GPU (one-click setup on Windows and Linux), with an `edge-tts` fallback or your own recordings.
 - **Rendered with [Remotion](https://www.remotion.dev)**: data-driven, so a new video is a folder and a `manifest.json`, never new code.
 - **Verified**: duration, resolution, audio sync, contact-sheet review and optional transcript check.
 
@@ -16,7 +16,7 @@ Copy the `product-demo-video/` folder into your skills directory (e.g. `~/.claud
 or, with your own script: *"Make a demo video from these screenshots and this script."*
 
 ## Requirements
-Node.js 18+, Python 3.9+ (`pip install pillow numpy`), ffmpeg. Optional: `faster-whisper` (tighter caption sync), NVIDIA GPU + Windows for the local voice
+Node.js 18+, Python 3.9+ (`pip install pillow numpy`), ffmpeg. Optional: `faster-whisper` (tighter caption sync), NVIDIA GPU (Windows or Linux) for the local voice
 (`product-demo-video/assets/tts/README.md`), or `pip install edge-tts` for the fallback voice.
 
 ## Try it without any product
@@ -28,7 +28,7 @@ product-demo-video/
   SKILL.md                 workflow Claude follows
   scripts/                 project setup, brand extraction, script parsing, voice jobs, timeline build, render, verify
   assets/remotion-template/ the Remotion project
-  assets/tts/              start_voice_server.bat, voice_server.py, requirements (local text-to-speech)
+  assets/tts/              start_voice_server.py (+ .bat/.sh wrappers), voice_server.py, requirements.txt (local text-to-speech)
   references/              manifest schema, script writing, design, voice, render/verify, environments
   examples/lumina/         sample inputs
 ```
