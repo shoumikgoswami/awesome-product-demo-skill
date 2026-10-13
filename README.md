@@ -1,4 +1,4 @@
-# product-demo-video
+# awesome-product-demo-video
 
 A Claude skill that turns **screenshots + an optional script** into a polished, enterprise-ready **product demo video**: narrated, captioned,
 with smooth zooms, a moving cursor, step tracker and a branded intro/outro. No screen recording needed.
