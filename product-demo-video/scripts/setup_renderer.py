@@ -29,6 +29,9 @@ def main():
     ap.add_argument("--no-install", action="store_true")
     a = ap.parse_args()
     dest = Path(a.dest).resolve()
+    if sys.platform == "win32" and len(str(dest)) + 110 > 259:
+        sys.exit(f"{dest} is too deep: Remotion's Chrome would end up in a path over Windows' 260-character limit and fail to launch.\n"
+                 "Use a shorter folder, e.g. --dest C:\\pdv\\renderer")
 
     node, npm = shutil.which("node"), shutil.which("npm")
     if not node or not npm:
@@ -55,6 +58,7 @@ def main():
         if not (dest / "node_modules").exists():
             run([npm, "install", "--no-audit", "--no-fund"], dest)
         run([node, "scripts/setup-fonts.mjs"], dest)
+        run([shutil.which("npx"), "remotion", "browser", "ensure"], dest)  # headless Chrome, downloaded once
     print(f"\nrenderer ready at {dest}")
 
 

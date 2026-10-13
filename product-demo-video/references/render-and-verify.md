@@ -48,3 +48,4 @@ Hard checks: duration == frames/fps (+-0.15 s), 1920x1080, audio stream present.
 | Captions drift from speech | install faster-whisper; or shorten sentences; confirm the wavs are the ones in the manifest |
 | `backdrop-filter` blur missing | uncommon headless browsers; use Remotion's own Chrome download |
 | Out of memory | lower `--concurrency` to 1 |
+| `Failed to launch the browser process` / `spawn ... ENOENT` on Windows | The renderer folder path is too deep (Chrome ends up over the 260-character limit). Set it up in a short folder, e.g. `setup_renderer.py --dest C:\pdvenderer` |

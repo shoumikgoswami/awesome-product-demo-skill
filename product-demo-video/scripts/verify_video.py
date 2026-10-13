@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Check a rendered demo video against its timeline before you send it.
 
-    python verify_video.py --video demo.mp4 --template renderer --name my-demo [--manifest manifest.json] [--out verify/] [--transcribe]
+    python verify_video.py --video demo.mp4 --template renderer --name my-demo [--manifest manifest.json] [--out DIR] [--transcribe]
 
 Checks  duration == timeline frames / fps | 1920x1080 | audio stream present | first speech lands where the timeline says
         (silencedetect) | optional: re-transcribes the audio with faster-whisper and compares each scene with its spoken text.
-Writes  verify/contact-sheet.png: frames from the intro, the middle of every scene and the outro - LOOK at it (clipped text, personal
+Writes  <video folder>/verify/contact-sheet.png: frames from the intro, the middle of every scene and the outro - LOOK at it (clipped text, personal
         data, wrong crop, cursor off target).
 Exit code 1 if a hard check fails.
 """
@@ -37,7 +37,7 @@ def main():
     ap.add_argument("--template", required=True)
     ap.add_argument("--name", required=True)
     ap.add_argument("--manifest")
-    ap.add_argument("--out", default="verify")
+    ap.add_argument("--out", help="output folder (default: <video folder>/verify)")
     ap.add_argument("--transcribe", action="store_true", help="re-transcribe the audio with faster-whisper (pip install faster-whisper)")
     a = ap.parse_args()
     if not shutil.which("ffprobe") or not shutil.which("ffmpeg"):
@@ -45,7 +45,7 @@ def main():
     tl = load_json(Path(a.template) / "public" / a.name / "timeline.json")
     if not tl:
         sys.exit("timeline.json not found")
-    out = Path(a.out)
+    out = Path(a.out) if a.out else Path(a.video).resolve().parent / "verify"
     out.mkdir(parents=True, exist_ok=True)
     fps = tl["fps"]
     fails, notes = [], []

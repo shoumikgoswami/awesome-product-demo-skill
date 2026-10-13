@@ -75,6 +75,11 @@ def main():
         sys.exit(f"{T / 'public' / a.name / 'timeline.json'} missing - run build_timeline.py first")
     props = f"--props=public/{a.name}/props.json"
     base = [npx(), "remotion"]
+    if not browser_args():  # download Remotion's headless Chrome once, up front (a no-op when present)
+        subprocess.run(base + ["browser", "ensure"], cwd=T, check=False)
+    if os.name == "nt" and len(str(T)) + 110 > 259:
+        print(f"WARNING: the renderer path is long ({len(str(T))} chars); Windows cannot launch Chrome from paths over 260. "
+              "If rendering fails to start the browser, set up the renderer in a short folder, e.g. C:\\pdv\\renderer.")
 
     if a.cmd == "stills":
         out = Path(a.out).resolve()
