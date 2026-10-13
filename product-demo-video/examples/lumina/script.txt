@@ -1,0 +1,28 @@
+Title: Lumina Analytics - Product Tour
+Product: Lumina
+
+# Overview
+## Dashboard
+This is your Lumina dashboard. Active users, conversion and revenue are always one glance away.
+[zoom: Active users]
+
+# Step 1: Create a report
+## Open Reports
+Open Reports, then choose New report.
+[click: New report]
+[chip: Reports > New report]
+
+## Configure
+Pick a data source, such as product events. Then choose a metric and a date range, and generate the report.
+[zoom: product events]
+[click: generate]
+
+# Step 2: Read the results
+## Results
+Your chart appears instantly, with an AI summary of what changed. Lumina also flags anomalies, like this spike in sign-ups.
+
+# Step 3: Share it
+## Share
+Finally, invite your team and send the report.
+[click: send]
+[chip: Share > Can view]

@@ -1,0 +1,9 @@
+node_modules/
+out/
+__pycache__/
+*.pyc
+renderer/
+voice-data/
+*.mp4
+.DS_Store
+pds.tgz

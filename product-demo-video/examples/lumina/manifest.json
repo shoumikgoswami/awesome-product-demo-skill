@@ -1,0 +1,64 @@
+{
+  "title": "Lumina Analytics - Product Tour",
+  "product": "Lumina",
+  "voice": "Sofia",
+  "fps": 30,
+  "stageLabel": "Product tour",
+  "logo": "logo.png",
+  "intro": {
+    "eyebrow": "Product tour",
+    "headline": "From raw data to shared insight in minutes",
+    "highlight": "shared insight",
+    "subhead": "See how Lumina turns product events into reports your whole team can act on.",
+    "hero": "01-dashboard.png",
+    "points": ["Pick a data source", "Generate a report with AI summaries", "Share it with your team"],
+    "seconds": 5
+  },
+  "outro": {
+    "headline": "Ready to try Lumina?",
+    "highlight": "Lumina",
+    "subhead": "Build your first report in under five minutes.",
+    "pills": ["lumina.example.com/start"],
+    "cards": [
+      {"title": "Connect data", "body": "Product events, CRM and billing in one place."},
+      {"title": "Generate reports", "body": "AI summaries and anomaly flags included."},
+      {"title": "Share securely", "body": "Invite teammates with view or edit access."}
+    ],
+    "closing": "Start free at lumina.example.com",
+    "seconds": 5
+  },
+  "chapters": [
+    {"id": "c1", "step": null, "title": "Overview"},
+    {"id": "c2", "step": 1, "title": "Create a report"},
+    {"id": "c3", "step": 2, "title": "Read the results"},
+    {"id": "c4", "step": 3, "title": "Share it"}
+  ],
+  "scenes": [
+    {"id": "s01", "image": "01-dashboard.png", "chapter": "c1",
+     "sentences": [
+       {"id": "s01a", "caption": "This is your Lumina dashboard."},
+       {"id": "s01b", "caption": "Active users, conversion and revenue are always one glance away."}],
+     "focus": [{"on": "Active users", "x": 0.18, "y": 0.12, "w": 0.73, "h": 0.19, "zoom": 1.35}]},
+    {"id": "s02", "image": "02-reports.png", "chapter": "c2", "chip": "Reports > New report",
+     "sentences": [{"id": "s02a", "caption": "Open Reports, then choose New report."}],
+     "focus": [{"on": "New report", "x": 0.82, "y": 0.016, "w": 0.15, "h": 0.055, "zoom": 1.7, "click": true}]},
+    {"id": "s03", "image": "03-new-report.png", "chapter": "c2",
+     "sentences": [
+       {"id": "s03a", "caption": "Pick a data source, such as product events."},
+       {"id": "s03b", "caption": "Then choose a metric and a date range, and generate the report."}],
+     "focus": [
+       {"on": "product events", "x": 0.2, "y": 0.22, "w": 0.23, "h": 0.155, "zoom": 1.6},
+       {"on": "generate", "x": 0.78, "y": 0.82, "w": 0.18, "h": 0.067, "zoom": 1.7, "click": true}]},
+    {"id": "s04", "image": "04-report-detail.png", "chapter": "c3",
+     "sentences": [
+       {"id": "s04a", "caption": "Your chart appears instantly, with an AI summary of what changed."},
+       {"id": "s04b", "caption": "Lumina also flags anomalies, like this spike in sign-ups."}],
+     "focus": [
+       {"on": "AI summary", "x": 0.18, "y": 0.62, "w": 0.39, "h": 0.32, "zoom": 1.6},
+       {"on": "anomalies", "x": 0.59, "y": 0.62, "w": 0.39, "h": 0.32, "zoom": 1.6}]},
+    {"id": "s05", "image": "05-share.png", "chapter": "c4", "chip": "Share > Can view",
+     "blur": [],
+     "sentences": [{"id": "s05a", "caption": "Finally, invite your team and send the report."}],
+     "focus": [{"on": "send", "x": 0.5, "y": 0.68, "w": 0.165, "h": 0.067, "zoom": 1.6, "click": true}]}
+  ]
+}
