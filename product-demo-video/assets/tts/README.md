@@ -34,7 +34,7 @@ Job file: `{"job": "my-video_v1", "voice": "Sofia", "chunks": [{"id": "s01a", "t
 - Expand abbreviations for the voice ("A P I", "S S O"); `pronunciations.json` and the skill's `voice_job.py lint` help.
 
 ### Options
-- `set VOICE_ENV_DIR=C:\path\to\env` before launching reuses an existing environment instead of creating a new one.
+- Set `VOICE_ENV_DIR` (`set VOICE_ENV_DIR=C:\path\to\env` on Windows, `export VOICE_ENV_DIR=~/env` on Linux) before launching reuses an existing environment instead of creating a new one.
 - `python voice_server.py --folder voice-data --http` also serves a token-protected HTTP API on 127.0.0.1:8765.
 - `python voice_server.py --folder voice-data --mock` makes tones instead of speech - for testing the plumbing without a GPU.
 
